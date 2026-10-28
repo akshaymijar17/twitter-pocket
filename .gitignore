@@ -1,0 +1,9 @@
+node_modules/
+dist/
+src/config.ts
+viewer/config.js
+.firebase/
+*.log
+.DS_Store
+*.pem
+viewer/public/

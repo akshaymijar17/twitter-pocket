@@ -1,0 +1,30 @@
+{
+  "name": "x-bookmarks-saver",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Brave/Chromium MV3 extension that saves X bookmarks and full threads to Firestore, plus a Pocket-style viewer.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "build:viewer": "node scripts/build-viewer.mjs",
+    "make-key": "node scripts/make-key.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "e2e": "npm run build && node scripts/e2e.mjs",
+    "deploy:rules": "firebase deploy --only firestore",
+    "deploy:viewer": "npm run build:viewer && firebase deploy --only hosting"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.38",
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.28.2",
+    "fake-indexeddb": "^6.2.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "firebase": "^13.1.0",
+    "jszip": "^3.10.1"
+  }
+}

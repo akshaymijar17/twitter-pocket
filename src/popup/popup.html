@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>X Bookmarks Saver</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { width: 340px; padding: 16px; }
+    header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+    #needs { list-style: none; }
+    #needs li { padding: 6px 0; border-bottom: 1px solid var(--gray-3); }
+    #needs a { text-decoration: none; display: block; }
+    #needs a:hover .p { text-decoration: underline; }
+    #needs .h { color: var(--gray-1); font-size: 11px; }
+    #needs .p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    #sync-state { margin-top: 8px; min-height: 1em; }
+  </style>
+</head>
+<body>
+  <header><h1>x bookmarks</h1><span id="account" class="muted"></span></header>
+  <div class="row"><span>Waiting to sync</span><span class="v" id="pending">–</span></div>
+  <div class="row"><span>Items saved</span><span class="v" id="total">–</span></div>
+  <div class="row"><span>Incomplete threads</span><span class="v" id="incomplete">–</span></div>
+  <div class="row"><span>Last sync</span><span class="v" id="last-sync">–</span></div>
+  <p id="error" class="error" hidden></p>
+
+  <div class="actions" id="page-actions">
+    <button id="sync" class="primary" hidden>Sync bookmarks</button>
+    <button id="stop" hidden>Stop</button>
+    <button id="save" class="primary" hidden>Save this post/thread</button>
+  </div>
+  <p id="sync-state" class="muted"></p>
+
+  <div class="actions">
+    <button id="auth">Sign in</button>
+    <button id="viewer">Open viewer</button>
+    <button id="push" title="Retry pending saves now">Sync now</button>
+  </div>
+
+  <h2>Needs thread save</h2>
+  <ul id="needs"><li class="muted">Nothing here.</li></ul>
+  <script src="popup.js"></script>
+</body>
+</html>

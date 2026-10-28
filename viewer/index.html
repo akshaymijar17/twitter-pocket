@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>x bookmarks</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23000'/%3E%3Cpath d='M5 3h6v10l-3-2.5L5 13z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --white: #ffffff; --black: #000000; --gray-1: #888888; --gray-2: #cccccc; --gray-3: #f2f2f2; --warn: #9a5b00;
+      --font: 'IBM Plex Sans', -apple-system, sans-serif;
+    }
+    html { font-size: 14px; }
+    body { font-family: var(--font); font-weight: 300; background: var(--white); color: var(--black);
+           -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    a { color: inherit; }
+    [hidden] { display: none !important; }
+    button, select, input { font-family: var(--font); font-weight: 300; font-size: 0.785rem; color: var(--black); }
+
+    .shell { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+    .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 8px; }
+    .header h1 { font-weight: 300; font-size: 1rem; letter-spacing: 0.04em; text-transform: lowercase; }
+    .header .count, .muted { color: var(--gray-1); }
+    .header .count { font-size: 0.785rem; letter-spacing: 0.02em; }
+    .account { font-size: 0.785rem; color: var(--gray-1); display: flex; gap: 12px; align-items: baseline; }
+    .link-btn { background: none; border: none; cursor: pointer; text-decoration: underline; color: var(--gray-1); padding: 0; }
+
+    .controls { display: flex; gap: 16px; margin-bottom: 16px; align-items: center; flex-wrap: wrap; }
+    .search-box { flex: 1; min-width: 200px; font-size: 0.857rem; border: none; border-bottom: 1px solid var(--gray-2);
+                  padding: 6px 0; outline: none; background: transparent; transition: border-color 0.15s; }
+    .search-box::placeholder { color: var(--gray-2); }
+    .search-box:focus { border-bottom-color: var(--black); }
+    select { border: none; border-bottom: 1px solid var(--gray-2); padding: 6px 16px 6px 0; background: transparent; outline: none; cursor: pointer;
+             appearance: none; -webkit-appearance: none;
+             background-image: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 8 5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23888'/%3E%3C/svg%3E");
+             background-repeat: no-repeat; background-position: right 0 center; }
+    select:focus { border-bottom-color: var(--black); }
+    label.check { font-size: 0.785rem; color: var(--gray-1); display: flex; gap: 4px; align-items: center; cursor: pointer; }
+    .folder-toggle { display: flex; }
+    .folder-toggle button { background: none; border: none; padding: 6px 12px; cursor: pointer; color: var(--gray-1);
+                            border-bottom: 1px solid var(--gray-2); transition: color 0.15s, border-color 0.15s; }
+    .folder-toggle button.active { color: var(--black); border-bottom-color: var(--black); }
+    .folder-toggle button:hover { color: var(--black); }
+    .plain-btn { background: none; border: 1px solid var(--gray-2); padding: 6px 16px; cursor: pointer; transition: border-color 0.15s; }
+    .plain-btn:hover { border-color: var(--black); }
+
+    #list { list-style: none; border-top: 1px solid var(--black); }
+    .row { display: flex; gap: 16px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--gray-3); }
+    .row .main { flex: 1; min-width: 0; cursor: pointer; outline: none; }
+    .row .main:hover .preview, .row .main:focus .preview { text-decoration: underline; text-decoration-color: var(--gray-2); }
+    .row.read .preview, .row.read .author { color: var(--gray-1); }
+    .meta { font-size: 0.785rem; color: var(--gray-1); display: flex; flex-wrap: wrap; gap: 0 6px; align-items: baseline; }
+    .author { color: var(--black); font-weight: 400; }
+    .preview { margin-top: 4px; line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; word-break: break-word; }
+    .badge { font-size: 0.714rem; border: 1px solid var(--gray-2); padding: 0 6px; color: var(--gray-1); }
+    .badge.warn { border-color: var(--warn); color: var(--warn); }
+    .badge.tag { border-style: dashed; }
+    .acts { display: flex; gap: 4px; flex-shrink: 0; }
+    .acts button, .star { background: none; border: none; cursor: pointer; color: var(--gray-1); padding: 2px 4px; font-size: 0.785rem; }
+    .acts button:hover { color: var(--black); }
+    .star.on { color: var(--black); }
+    .empty { list-style: none; color: var(--gray-1); padding: 24px 0; }
+
+    #item-view .back { font-size: 0.785rem; color: var(--gray-1); text-decoration: none; }
+    #item-view h2 { font-weight: 400; font-size: 1.143rem; margin: 16px 0 4px; }
+    #item-view .meta a { color: var(--black); }
+    .warn-note { margin-top: 12px; color: var(--warn); font-size: 0.857rem; }
+    .item-acts { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 16px 0 24px; padding-bottom: 16px; border-bottom: 1px solid var(--black); }
+    .item-acts .tags { flex: 1; min-width: 160px; border: none; border-bottom: 1px solid var(--gray-2); padding: 6px 0; outline: none; }
+    .item-acts .tags:focus { border-bottom-color: var(--black); }
+    .item-acts > button:not(.star) { background: none; border: 1px solid var(--gray-2); padding: 6px 12px; cursor: pointer; }
+    .posts { list-style: none; }
+    .post { padding: 16px 0; border-bottom: 1px solid var(--gray-3); }
+    .post.bookmarked { border-left: 2px solid var(--black); padding-left: 12px; margin-left: -14px; }
+    .post .num { font-size: 0.714rem; color: var(--gray-1); letter-spacing: 0.04em; margin-bottom: 6px; }
+    .post .text { font-size: 1.071rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+    .post blockquote { margin-top: 12px; padding: 8px 12px; border-left: 1px solid var(--gray-2); }
+    .post blockquote .text { font-size: 0.929rem; color: #333; }
+    .post .media { list-style: none; display: flex; gap: 12px; margin-top: 8px; font-size: 0.785rem; }
+    .post-link { display: inline-block; margin-top: 8px; font-size: 0.714rem; color: var(--gray-1); }
+
+    #signed-out { padding: 80px 0; text-align: center; }
+    #error { margin-bottom: 16px; font-size: 0.857rem; color: #b00020; }
+
+    @media (max-width: 600px) {
+      .shell { padding: 24px 16px 60px; }
+      .row { flex-direction: column; gap: 6px; }
+      .acts { align-self: flex-end; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="header">
+      <h1>x bookmarks</h1>
+      <div class="account"><span id="sync-note"></span><span id="account"></span><button id="signout" class="link-btn">sign out</button></div>
+    </div>
+    <p id="error" hidden></p>
+
+    <div id="signed-out" hidden>
+      <button id="signin" class="plain-btn">Sign in with Google</button>
+    </div>
+
+    <div id="app" hidden>
+      <section id="list-view">
+        <div class="controls">
+          <input id="search" class="search-box" type="search" placeholder="search — press /" autocomplete="off">
+          <select id="sort" aria-label="Sort"><option value="bookmarked">date bookmarked</option><option value="posted">date posted</option></select>
+          <span class="count" id="count"></span>
+        </div>
+        <div class="controls">
+          <div class="folder-toggle" id="status">
+            <button data-status="unread" class="active">unread</button>
+            <button data-status="read">read</button>
+            <button data-status="archived">archive</button>
+            <button data-status="all">all</button>
+          </div>
+          <select id="type" aria-label="Type"><option value="all">all types</option><option value="post">posts</option><option value="thread">threads</option></select>
+          <select id="author" aria-label="Author"><option value="">all authors</option></select>
+          <label class="check"><input id="fav" type="checkbox"> favorites</label>
+          <label class="check"><input id="incomplete" type="checkbox"> incomplete threads</label>
+          <button id="export-all" class="plain-btn" title="Download every item as markdown in a zip">export all</button>
+        </div>
+        <ul id="list"></ul>
+      </section>
+      <section id="item-view" hidden></section>
+    </div>
+  </div>
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "data": {
+    "bookmark_timeline_v2": {
+      "timeline": {
+        "instructions": [
+          {
+            "type": "TimelineAddEntries",
+            "entries": [
+              {
+                "entryId": "cursor-top-x",
+                "sortIndex": "1",
+                "content": {
+                  "entryType": "TimelineTimelineCursor",
+                  "__typename": "TimelineTimelineCursor",
+                  "value": "x",
+                  "cursorType": "Top"
+                }
+              },
+              {
+                "entryId": "cursor-bottom-y",
+                "sortIndex": "1",
+                "content": {
+                  "entryType": "TimelineTimelineCursor",
+                  "__typename": "TimelineTimelineCursor",
+                  "value": "y",
+                  "cursorType": "Bottom"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
