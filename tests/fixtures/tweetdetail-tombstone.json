@@ -1,0 +1,131 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1845000000000000700",
+              "sortIndex": "3",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "__typename": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "__typename": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1845000000000000700",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "1001",
+                            "core": {
+                              "name": "Alice Ng",
+                              "screen_name": "alice"
+                            },
+                            "legacy": {
+                              "followers_count": 1
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1845000000000000700",
+                        "user_id_str": "1001",
+                        "created_at": "Thu Oct 02 10:00:00 +0000 2025",
+                        "full_text": "Thread start",
+                        "conversation_id_str": "1845000000000000700",
+                        "display_text_range": [
+                          0,
+                          12
+                        ],
+                        "entities": {
+                          "urls": [],
+                          "hashtags": [],
+                          "user_mentions": []
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "tweet-1845000000000000701",
+              "sortIndex": "2",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "__typename": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "__typename": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "TweetTombstone",
+                      "tombstone": {}
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "tweet-1845000000000000702",
+              "sortIndex": "1",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "__typename": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "__typename": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1845000000000000702",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "1001",
+                            "core": {
+                              "name": "Alice Ng",
+                              "screen_name": "alice"
+                            },
+                            "legacy": {
+                              "followers_count": 1
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1845000000000000702",
+                        "user_id_str": "1001",
+                        "created_at": "Thu Oct 02 10:02:00 +0000 2025",
+                        "full_text": "Third (second was deleted)",
+                        "conversation_id_str": "1845000000000000700",
+                        "display_text_range": [
+                          0,
+                          26
+                        ],
+                        "entities": {
+                          "urls": [],
+                          "hashtags": [],
+                          "user_mentions": []
+                        },
+                        "in_reply_to_status_id_str": "1845000000000000701",
+                        "in_reply_to_user_id_str": "1001"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

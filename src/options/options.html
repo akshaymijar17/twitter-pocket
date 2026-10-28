@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>X Bookmarks Saver · Options</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; font-size: 14px; }
+    label { display: block; margin: 12px 0 4px; }
+    input[type=url] { width: 100%; font: inherit; border: none; border-bottom: 1px solid var(--gray-2); padding: 6px 0; outline: none; }
+    input[type=url]:focus { border-bottom-color: var(--black); }
+    code { font-size: 12px; background: var(--gray-3); padding: 2px 4px; word-break: break-all; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    td { padding: 5px 8px 5px 0; border-bottom: 1px solid var(--gray-3); vertical-align: top; }
+    .ok { color: #0a7d32; } .bad { color: var(--red); }
+    p { margin: 6px 0; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h1>x bookmarks · options</h1>
+
+  <h2>Viewer</h2>
+  <label for="viewer">Viewer URL (opened by the popup's "Open viewer")</label>
+  <input id="viewer" type="url" placeholder="https://your-project.web.app">
+
+  <h2>Debug</h2>
+  <label><input id="debug" type="checkbox"> Download every captured X response to <code>Downloads/x-bookmarks-debug/</code> (use these as test fixtures)</label>
+  <p id="saved" class="muted"></p>
+
+  <h2>OAuth setup values</h2>
+  <p>Extension ID: <code id="ext-id"></code></p>
+  <p>Authorized redirect URI to add to your OAuth client: <code id="redirect"></code></p>
+
+  <h2>Spike / diagnostics (milestone 0)</h2>
+  <p class="muted">Runs sign-in, writes and reads <code>users/{uid}/x_items/test</code>, checks that the rules reject
+     unauthenticated and cross-user reads, then deletes the test doc. Capture counts come from open x.com tabs: open your
+     bookmarks page and a post page first.</p>
+  <div class="actions"><button id="spike" class="primary">Run checks</button></div>
+  <table id="results"></table>
+  <h2>Captured responses (this browser session)</h2>
+  <table id="captures"><tr><td class="muted">None yet. Open x.com/i/bookmarks or a post.</td></tr></table>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineAddToModule",
+          "moduleEntryId": "conversationthread-1845000000000000503",
+          "moduleItems": [
+            {
+              "entryId": "conversationthread-1845000000000000503-tweet-1845000000000000505",
+              "item": {
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1845000000000000505",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "745273",
+                            "legacy": {
+                              "name": "Naval",
+                              "screen_name": "naval"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1845000000000000505",
+                        "user_id_str": "745273",
+                        "created_at": "Wed Oct 01 10:07:00 +0000 2025",
+                        "full_text": "@naval 5/ Last point.",
+                        "conversation_id_str": "1845000000000000500",
+                        "display_text_range": [
+                          7,
+                          21
+                        ],
+                        "entities": {
+                          "urls": [],
+                          "hashtags": [],
+                          "user_mentions": []
+                        },
+                        "in_reply_to_status_id_str": "1845000000000000504",
+                        "in_reply_to_user_id_str": "745273"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "data": {
+    "bookmark_timeline_v2": {
+      "timeline": {
+        "instructions": [
+          {
+            "type": "TimelineAddEntries",
+            "entries": [
+              {
+                "entryId": "tweet-1845000000000000100",
+                "sortIndex": "1900000000000000300",
+                "content": {
+                  "entryType": "TimelineTimelineItem",
+                  "__typename": "TimelineTimelineItem",
+                  "itemContent": {
+                    "itemType": "TimelineTweet",
+                    "__typename": "TimelineTweet",
+                    "tweet_results": {
+                      "result": {
+                        "__typename": "Tweet",
+                        "rest_id": "1845000000000000100",
+                        "core": {
+                          "user_results": {
+                            "result": {
+                              "__typename": "User",
+                              "rest_id": "745273",
+                              "legacy": {
+                                "name": "Naval",
+                                "screen_name": "naval"
+                              }
+                            }
+                          }
+                        },
+                        "legacy": {
+                          "id_str": "1845000000000000100",
+                          "user_id_str": "745273",
+                          "created_at": "Wed Oct 01 12:00:00 +0000 2025",
+                          "full_text": "Seek wealth, not money or status. https://t.co/abc123 https://t.co/media1 &amp; more",
+                          "conversation_id_str": "1845000000000000100",
+                          "display_text_range": [
+                            0,
+                            84
+                          ],
+                          "entities": {
+                            "urls": [
+                              {
+                                "url": "https://t.co/abc123",
+                                "expanded_url": "https://nav.al/wealth",
+                                "display_url": "nav.al/wealth"
+                              }
+                            ],
+                            "media": [
+                              {
+                                "url": "https://t.co/media1"
+                              }
+                            ]
+                          },
+                          "extended_entities": {
+                            "media": [
+                              {
+                                "type": "photo",
+                                "url": "https://t.co/media1",
+                                "media_url_https": "https://pbs.twimg.com/media/AAA.jpg"
+                              },
+                              {
+                                "type": "video",
+                                "url": "https://t.co/media1",
+                                "media_url_https": "https://pbs.twimg.com/thumb.jpg",
+                                "video_info": {
+                                  "variants": [
+                                    {
+                                      "content_type": "application/x-mpegURL",
+                                      "url": "https://video.twimg.com/pl.m3u8"
+                                    },
+                                    {
+                                      "content_type": "video/mp4",
+                                      "bitrate": 256000,
+                                      "url": "https://video.twimg.com/low.mp4"
+                                    },
+                                    {
+                                      "content_type": "video/mp4",
+                                      "bitrate": 2176000,
+                                      "url": "https://video.twimg.com/high.mp4"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "entryId": "tweet-1845000000000000200",
+                "sortIndex": "1900000000000000290",
+                "content": {
+                  "entryType": "TimelineTimelineItem",
+                  "__typename": "TimelineTimelineItem",
+                  "itemContent": {
+                    "itemType": "TimelineTweet",
+                    "__typename": "TimelineTweet",
+                    "tweet_results": {
+                      "result": {
+                        "__typename": "Tweet",
+                        "rest_id": "1845000000000000200",
+                        "core": {
+                          "user_results": {
+                            "result": {
+                              "__typename": "User",
+                              "rest_id": "1001",
+                              "core": {
+                                "name": "Alice Ng",
+                                "screen_name": "alice"
+                              },
+                              "legacy": {
+                                "followers_count": 1
+                              }
+                            }
+                          }
+                        },
+                        "legacy": {
+                          "id_str": "1845000000000000200",
+                          "user_id_str": "1001",
+                          "created_at": "Wed Oct 01 12:00:00 +0000 2025",
+                          "full_text": "Short version that X truncates…",
+                          "conversation_id_str": "1845000000000000200",
+                          "display_text_range": [
+                            0,
+                            31
+                          ],
+                          "entities": {
+                            "urls": [],
+                            "hashtags": [],
+                            "user_mentions": []
+                          }
+                        },
+                        "note_tweet": {
+                          "is_expandable": true,
+                          "note_tweet_results": {
+                            "result": {
+                              "id": "note1845000000000000200",
+                              "text": "This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. This is a long post. Read more at https://t.co/long1 — the end.",
+                              "entity_set": {
+                                "urls": [
+                                  {
+                                    "url": "https://t.co/long1",
+                                    "expanded_url": "https://example.com/long"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "entryId": "tweet-1845000000000000300",
+                "sortIndex": "1900000000000000280",
+                "content": {
+                  "entryType": "TimelineTimelineItem",
+                  "__typename": "TimelineTimelineItem",
+                  "itemContent": {
+                    "itemType": "TimelineTweet",
+                    "__typename": "TimelineTweet",
+                    "tweet_results": {
+                      "result": {
+                        "__typename": "Tweet",
+                        "rest_id": "1845000000000000300",
+                        "core": {
+                          "user_results": {
+                            "result": {
+                              "__typename": "User",
+                              "rest_id": "1002",
+                              "legacy": {
+                                "name": "Bob",
+                                "screen_name": "bob"
+                              }
+                            }
+                          }
+                        },
+                        "legacy": {
+                          "id_str": "1845000000000000300",
+                          "user_id_str": "1002",
+                          "created_at": "Wed Oct 01 12:00:00 +0000 2025",
+                          "full_text": "This is exactly right https://t.co/q1",
+                          "conversation_id_str": "1845000000000000300",
+                          "display_text_range": [
+                            0,
+                            37
+                          ],
+                          "entities": {
+                            "urls": [
+                              {
+                                "url": "https://t.co/q1",
+                                "expanded_url": "https://twitter.com/naval/status/1845000000000000100"
+                              }
+                            ]
+                          },
+                          "quoted_status_id_str": "1845000000000000100",
+                          "quoted_status_permalink": {
+                            "url": "https://t.co/q1",
+                            "expanded": "https://twitter.com/naval/status/1845000000000000100"
+                          }
+                        },
+                        "quoted_status_result": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1845000000000000100",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "745273",
+                                  "legacy": {
+                                    "name": "Naval",
+                                    "screen_name": "naval"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1845000000000000100",
+                              "user_id_str": "745273",
+                              "created_at": "Wed Oct 01 12:00:00 +0000 2025",
+                              "full_text": "Seek wealth, not money or status.",
+                              "conversation_id_str": "1845000000000000100",
+                              "display_text_range": [
+                                0,
+                                33
+                              ],
+                              "entities": {
+                                "urls": [],
+                                "hashtags": [],
+                                "user_mentions": []
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "entryId": "tweet-1845000000000000502",
+                "sortIndex": "1900000000000000270",
+                "content": {
+                  "entryType": "TimelineTimelineItem",
+                  "__typename": "TimelineTimelineItem",
+                  "itemContent": {
+                    "itemType": "TimelineTweet",
+                    "__typename": "TimelineTweet",
+                    "tweet_results": {
+                      "result": {
+                        "__typename": "TweetWithVisibilityResults",
+                        "tweet": {
+                          "__typename": "Tweet",
+                          "rest_id": "1845000000000000502",
+                          "core": {
+                            "user_results": {
+                              "result": {
+                                "__typename": "User",
+                                "rest_id": "745273",
+                                "legacy": {
+                                  "name": "Naval",
+                                  "screen_name": "naval"
+                                }
+                              }
+                            }
+                          },
+                          "legacy": {
+                            "id_str": "1845000000000000502",
+                            "user_id_str": "745273",
+                            "created_at": "Wed Oct 01 12:00:00 +0000 2025",
+                            "full_text": "@naval 2/ Second point of the thread.",
+                            "conversation_id_str": "1845000000000000500",
+                            "display_text_range": [
+                              7,
+                              37
+                            ],
+                            "entities": {
+                              "urls": [],
+                              "hashtags": [],
+                              "user_mentions": []
+                            },
+                            "in_reply_to_status_id_str": "1845000000000000501",
+                            "in_reply_to_user_id_str": "745273"
+                          }
+                        },
+                        "limitedActionResults": {
+                          "limited_actions": []
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "entryId": "tweet-1845000000000000999",
+                "sortIndex": "1900000000000000260",
+                "content": {
+                  "entryType": "TimelineTimelineItem",
+                  "__typename": "TimelineTimelineItem",
+                  "itemContent": {
+                    "itemType": "TimelineTweet",
+                    "__typename": "TimelineTweet",
+                    "tweet_results": {
+                      "result": {
+                        "__typename": "TweetTombstone",
+                        "tombstone": {
+                          "text": {
+                            "text": "This post was deleted by the Post author."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "entryId": "cursor-top-DAABCgABGc",
+                "sortIndex": "1",
+                "content": {
+                  "entryType": "TimelineTimelineCursor",
+                  "__typename": "TimelineTimelineCursor",
+                  "value": "DAABCgABGc",
+                  "cursorType": "Top"
+                }
+              },
+              {
+                "entryId": "cursor-bottom-DAABCgABGd",
+                "sortIndex": "1",
+                "content": {
+                  "entryType": "TimelineTimelineCursor",
+                  "__typename": "TimelineTimelineCursor",
+                  "value": "DAABCgABGd",
+                  "cursorType": "Bottom"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

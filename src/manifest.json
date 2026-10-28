@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "X Bookmarks Saver",
+  "version": "0.1.0",
+  "description": "Saves your X bookmarks and full threads to your own Firestore.",
+  "minimum_chrome_version": "111",
+  "permissions": ["identity", "storage", "downloads", "alarms"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*",
+    "https://firestore.googleapis.com/*",
+    "https://identitytoolkit.googleapis.com/*",
+    "https://securetoken.googleapis.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": { "default_popup": "popup.html", "default_title": "X Bookmarks Saver", "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png" } },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "commands": {
+    "save-thread": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "Save this post and its thread"
+    }
+  }
+}

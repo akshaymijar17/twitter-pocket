@@ -1,0 +1,376 @@
+{
+  "data": {
+    "threaded_conversation_with_injections_v2": {
+      "instructions": [
+        {
+          "type": "TimelineClearCache"
+        },
+        {
+          "type": "TimelineAddEntries",
+          "entries": [
+            {
+              "entryId": "tweet-1845000000000000500",
+              "sortIndex": "9",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "__typename": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "__typename": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1845000000000000500",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "745273",
+                            "legacy": {
+                              "name": "Naval",
+                              "screen_name": "naval"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1845000000000000500",
+                        "user_id_str": "745273",
+                        "created_at": "Wed Oct 01 10:00:00 +0000 2025",
+                        "full_text": "How to get rich (without getting lucky): 🧵",
+                        "conversation_id_str": "1845000000000000500",
+                        "display_text_range": [
+                          0,
+                          42
+                        ],
+                        "entities": {
+                          "urls": [],
+                          "hashtags": [],
+                          "user_mentions": []
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "tweet-1845000000000000501",
+              "sortIndex": "8",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "__typename": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "__typename": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "Tweet",
+                      "rest_id": "1845000000000000501",
+                      "core": {
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "745273",
+                            "legacy": {
+                              "name": "Naval",
+                              "screen_name": "naval"
+                            }
+                          }
+                        }
+                      },
+                      "legacy": {
+                        "id_str": "1845000000000000501",
+                        "user_id_str": "745273",
+                        "created_at": "Wed Oct 01 10:01:00 +0000 2025",
+                        "full_text": "@naval 1/ First point.",
+                        "conversation_id_str": "1845000000000000500",
+                        "display_text_range": [
+                          7,
+                          22
+                        ],
+                        "entities": {
+                          "urls": [],
+                          "hashtags": [],
+                          "user_mentions": []
+                        },
+                        "in_reply_to_status_id_str": "1845000000000000500",
+                        "in_reply_to_user_id_str": "745273"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "tweet-1845000000000000502",
+              "sortIndex": "7",
+              "content": {
+                "entryType": "TimelineTimelineItem",
+                "__typename": "TimelineTimelineItem",
+                "itemContent": {
+                  "itemType": "TimelineTweet",
+                  "__typename": "TimelineTweet",
+                  "tweet_results": {
+                    "result": {
+                      "__typename": "TweetWithVisibilityResults",
+                      "tweet": {
+                        "__typename": "Tweet",
+                        "rest_id": "1845000000000000502",
+                        "core": {
+                          "user_results": {
+                            "result": {
+                              "__typename": "User",
+                              "rest_id": "745273",
+                              "legacy": {
+                                "name": "Naval",
+                                "screen_name": "naval"
+                              }
+                            }
+                          }
+                        },
+                        "legacy": {
+                          "id_str": "1845000000000000502",
+                          "user_id_str": "745273",
+                          "created_at": "Wed Oct 01 10:02:00 +0000 2025",
+                          "full_text": "@naval 2/ Second point of the thread.",
+                          "conversation_id_str": "1845000000000000500",
+                          "display_text_range": [
+                            7,
+                            37
+                          ],
+                          "entities": {
+                            "urls": [],
+                            "hashtags": [],
+                            "user_mentions": []
+                          },
+                          "in_reply_to_status_id_str": "1845000000000000501",
+                          "in_reply_to_user_id_str": "745273"
+                        }
+                      },
+                      "limitedActionResults": {
+                        "limited_actions": []
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "entryId": "conversationthread-1845000000000000503",
+              "sortIndex": "0",
+              "content": {
+                "entryType": "TimelineTimelineModule",
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "items": [
+                  {
+                    "entryId": "conversationthread-1845000000000000503-tweet-1845000000000000503",
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1845000000000000503",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "745273",
+                                  "legacy": {
+                                    "name": "Naval",
+                                    "screen_name": "naval"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1845000000000000503",
+                              "user_id_str": "745273",
+                              "created_at": "Wed Oct 01 10:03:00 +0000 2025",
+                              "full_text": "@naval 3/ Third point.",
+                              "conversation_id_str": "1845000000000000500",
+                              "display_text_range": [
+                                7,
+                                22
+                              ],
+                              "entities": {
+                                "urls": [],
+                                "hashtags": [],
+                                "user_mentions": []
+                              },
+                              "in_reply_to_status_id_str": "1845000000000000502",
+                              "in_reply_to_user_id_str": "745273"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-1845000000000000503-tweet-1845000000000000504",
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1845000000000000504",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "745273",
+                                  "legacy": {
+                                    "name": "Naval",
+                                    "screen_name": "naval"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1845000000000000504",
+                              "user_id_str": "745273",
+                              "created_at": "Wed Oct 01 10:04:00 +0000 2025",
+                              "full_text": "@naval 4/ Fourth point.",
+                              "conversation_id_str": "1845000000000000500",
+                              "display_text_range": [
+                                7,
+                                23
+                              ],
+                              "entities": {
+                                "urls": [],
+                                "hashtags": [],
+                                "user_mentions": []
+                              },
+                              "in_reply_to_status_id_str": "1845000000000000503",
+                              "in_reply_to_user_id_str": "745273"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "entryId": "conversationthread-1845000000000000600",
+              "sortIndex": "0",
+              "content": {
+                "entryType": "TimelineTimelineModule",
+                "__typename": "TimelineTimelineModule",
+                "displayType": "VerticalConversation",
+                "items": [
+                  {
+                    "entryId": "conversationthread-1845000000000000600-tweet-1845000000000000600",
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1845000000000000600",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "1002",
+                                  "legacy": {
+                                    "name": "Bob",
+                                    "screen_name": "bob"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1845000000000000600",
+                              "user_id_str": "1002",
+                              "created_at": "Wed Oct 01 10:05:00 +0000 2025",
+                              "full_text": "@naval Great thread!",
+                              "conversation_id_str": "1845000000000000500",
+                              "display_text_range": [
+                                7,
+                                20
+                              ],
+                              "entities": {
+                                "urls": [],
+                                "hashtags": [],
+                                "user_mentions": []
+                              },
+                              "in_reply_to_status_id_str": "1845000000000000502",
+                              "in_reply_to_user_id_str": "745273"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "conversationthread-1845000000000000600-tweet-1845000000000000601",
+                    "item": {
+                      "itemContent": {
+                        "itemType": "TimelineTweet",
+                        "__typename": "TimelineTweet",
+                        "tweet_results": {
+                          "result": {
+                            "__typename": "Tweet",
+                            "rest_id": "1845000000000000601",
+                            "core": {
+                              "user_results": {
+                                "result": {
+                                  "__typename": "User",
+                                  "rest_id": "745273",
+                                  "legacy": {
+                                    "name": "Naval",
+                                    "screen_name": "naval"
+                                  }
+                                }
+                              }
+                            },
+                            "legacy": {
+                              "id_str": "1845000000000000601",
+                              "user_id_str": "745273",
+                              "created_at": "Wed Oct 01 10:06:00 +0000 2025",
+                              "full_text": "@bob Thanks!",
+                              "conversation_id_str": "1845000000000000500",
+                              "display_text_range": [
+                                5,
+                                12
+                              ],
+                              "entities": {
+                                "urls": [],
+                                "hashtags": [],
+                                "user_mentions": []
+                              },
+                              "in_reply_to_status_id_str": "1845000000000000600",
+                              "in_reply_to_user_id_str": "1002"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "entryId": "cursor-bottom-more",
+              "sortIndex": "1",
+              "content": {
+                "entryType": "TimelineTimelineCursor",
+                "__typename": "TimelineTimelineCursor",
+                "value": "more",
+                "cursorType": "Bottom"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
