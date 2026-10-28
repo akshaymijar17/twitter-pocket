@@ -19,8 +19,8 @@ import { isCapturedOperation, operationFromUrl } from '../shared/parser';
   const wanted = (url: string) => url.includes('/graphql/') && isCapturedOperation(operationFromUrl(url));
 
   const origFetch = window.fetch;
-  window.fetch = async function (this: unknown, ...args: Parameters<typeof fetch>) {
-    const res = await origFetch.apply(this, args);
+  window.fetch = async function (...args: Parameters<typeof fetch>) {
+    const res = await origFetch.apply(window, args);
     try {
       const input = args[0];
       const url = typeof input === 'string' ? input : input instanceof Request ? input.url : String(input);

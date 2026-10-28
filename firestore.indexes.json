@@ -1,0 +1,20 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "x_items",
+      "fieldPath": "search_text",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "x_items",
+      "fieldPath": "posts",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "x_items",
+      "fieldPath": "preview",
+      "indexes": []
+    }
+  ]
+}
