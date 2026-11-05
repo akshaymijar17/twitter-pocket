@@ -44,6 +44,8 @@ export interface StatusReply {
   pending: number;
   lastSyncAt: string | null;
   lastError: string | null;
+  /** Why the last sign-in failed, while signed out. */
+  authError: string | null;
   needsThreadSave: { id: string; url: string; author_handle: string; preview: string }[];
   viewerUrl: string;
 }

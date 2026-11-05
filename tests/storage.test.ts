@@ -255,8 +255,11 @@ describe('auth token refresh', () => {
     expect(s.s).toMatchObject({ refreshToken: 'r2', expiresAt: now + 3600_000 });
 
     s.s = { ...s.s!, expiresAt: now };
+    const reasons: string[] = [];
+    a.onSignedOut = (r) => reasons.push(r);
     fetchFn.mockResolvedValueOnce(new Response(JSON.stringify({ error: { message: 'TOKEN_EXPIRED' } }), { status: 400 }));
     expect(await a.idToken()).toBeNull();
     expect(s.s).toBeNull();
+    expect(reasons).toEqual(['TOKEN_EXPIRED']);
   });
 });

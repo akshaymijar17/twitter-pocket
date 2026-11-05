@@ -40,6 +40,8 @@ export class AuthError extends Error {}
 
 export class Auth {
   private refreshing: Promise<Session | null> | null = null;
+  /** Called when a refresh shows the session is gone (revoked or expired), with Google's reason. */
+  onSignedOut?: (reason: string) => void;
 
   constructor(
     private cfg: AuthConfig,
@@ -141,6 +143,7 @@ export class Auth {
       // A revoked or expired refresh token means signed out; network trouble does not.
       if (res.status === 400 || res.status === 401 || res.status === 403) {
         await this.store.save(null);
+        this.onSignedOut?.(j?.error?.message ?? `HTTP ${res.status}`);
         return null;
       }
       throw new AuthError(`token refresh failed: ${res.status}`);

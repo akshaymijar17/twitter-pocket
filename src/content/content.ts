@@ -160,7 +160,7 @@ async function saveThread() {
     const parts = [n > 1 ? `Saved thread · ${n} posts` : 'Saved post'];
     if (!r.threadComplete) parts.push('top of thread not loaded, scroll up and save again');
     if (fallback) parts.push('read from the page, long posts may be cut off');
-    if (!r.signedIn) parts.push('saved locally, sign in to sync');
+    if (!r.signedIn) parts.push('saved locally, sign in from the extension to sync');
     showToast(parts.join(' · '));
   } catch (e) {
     showToast(`Save failed: ${e instanceof Error ? e.message : e}`, true);

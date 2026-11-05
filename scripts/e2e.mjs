@@ -132,6 +132,20 @@ await p3.waitForTimeout(800);
 const t3 = await p3.locator('x-bookmarks-saver .toast').textContent();
 check('DOM fallback saves same-author posts and says so', t3.includes('2 posts') && t3.includes('read from the page'), t3);
 
+// Sign-in: a fresh install opens the account page, which starts sign-in. The test
+// build has no OAuth client, so Google shows an error; closing that window (as a
+// user would) must surface the failure on the page and keep it for the popup.
+const opts = ctx.pages().find((pg) => pg.url().includes('options.html#signin'));
+check('first install opens the sign-in page', !!opts);
+for (const pg of ctx.pages()) if (pg.url().includes('accounts.google.com')) await pg.close();
+if (opts) {
+  await opts.locator('#account-error').waitFor({ state: 'visible', timeout: 20000 }).catch(() => {});
+  const err = await opts.locator('#account-error').textContent();
+  check('a failed sign-in shows its error on the page', err.startsWith('Sign-in failed:'), err);
+  const st = await sw.evaluate(() => chrome.storage.local.get('authError'));
+  check('the error is kept for the popup', !!st.authError, st.authError);
+}
+
 await ctx.close();
 console.log(failures ? `\n${failures} check(s) failed` : '\nall checks passed');
 process.exit(failures ? 1 : 0);

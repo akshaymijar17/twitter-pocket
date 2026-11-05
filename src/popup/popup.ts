@@ -31,8 +31,9 @@ async function renderStatus() {
   $('last-sync').textContent = ago(s.lastSyncAt);
   $<HTMLButtonElement>('viewer').disabled = !s.viewerUrl;
   $('viewer').dataset.url = s.viewerUrl;
-  if (s.pending > 0 && s.lastError) showError(`Last sync error: ${s.lastError}`);
-  else if (s.pending > 0 && !s.signedIn) showError('Signed out: saves are kept locally until you sign in.');
+  if (!s.signedIn && s.authError) showError(`Sign-in failed: ${s.authError}`);
+  else if (s.pending > 0 && !s.signedIn) showError('Signed out: saves are kept on this computer until you sign in (once).');
+  else if (s.pending > 0 && s.lastError) showError(`Last sync error: ${s.lastError}`);
   else showError(null);
 
   const ul = $('needs');
@@ -88,7 +89,13 @@ async function init() {
   $('auth').onclick = async () => {
     try {
       const s = await bg<StatusReply>({ type: 'getStatus' });
-      const r = await bg<{ ok: boolean; error?: string }>({ type: s.signedIn ? 'signOut' : 'signIn' });
+      if (!s.signedIn) {
+        // Google's sign-in window closes this popup, so sign in from a page that stays open.
+        await chrome.tabs.create({ url: chrome.runtime.getURL('options.html#signin') });
+        window.close();
+        return;
+      }
+      const r = await bg<{ ok: boolean; error?: string }>({ type: 'signOut' });
       if (!r.ok) throw new Error(r.error);
       await renderStatus();
     } catch (e) {
