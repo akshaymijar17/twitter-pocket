@@ -1,5 +1,5 @@
 import { CONFIG } from '../config';
-import type { Settings } from '../shared/messages';
+import type { Settings, StatusReply } from '../shared/messages';
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -36,7 +36,50 @@ async function renderCaptures() {
   );
 }
 
+async function renderAccount(): Promise<StatusReply> {
+  const s: StatusReply = await chrome.runtime.sendMessage({ type: 'getStatus' });
+  $('account-state').textContent = s.signedIn ? `Signed in as ${s.email ?? 'unknown'}.` : 'Signed out.';
+  const btn = $<HTMLButtonElement>('account-btn');
+  btn.hidden = false;
+  btn.textContent = s.signedIn ? 'Sign out' : 'Sign in with Google';
+  btn.className = s.signedIn ? '' : 'primary';
+  showAccountError(s.signedIn ? null : s.authError);
+  return s;
+}
+
+function showAccountError(e: string | null | undefined) {
+  $('account-error').hidden = !e;
+  $('account-error').textContent = e ? `Sign-in failed: ${e}` : '';
+}
+
+async function signIn() {
+  const btn = $<HTMLButtonElement>('account-btn');
+  btn.disabled = true;
+  $('account-state').textContent = 'Waiting for Google…';
+  try {
+    const r = await chrome.runtime.sendMessage({ type: 'signIn' });
+    if (!r?.ok) showAccountError(r?.error ?? 'unknown error');
+  } finally {
+    btn.disabled = false;
+    const s = await renderAccount();
+    if (s.signedIn && location.hash === '#signin') history.replaceState(null, '', location.pathname);
+  }
+}
+
 async function init() {
+  const account = await renderAccount();
+  $('account-btn').onclick = async () => {
+    const s = await renderAccount();
+    if (s.signedIn) {
+      await chrome.runtime.sendMessage({ type: 'signOut' });
+      await renderAccount();
+    } else {
+      await signIn();
+    }
+  };
+  // Opened from the popup's "Sign in" or on first install: start right away.
+  if (location.hash === '#signin' && !account.signedIn) void signIn();
+
   const s = await load();
   $<HTMLInputElement>('viewer').value = s.viewerUrl;
   $<HTMLInputElement>('debug').checked = s.debug;

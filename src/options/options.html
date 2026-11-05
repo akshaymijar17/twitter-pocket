@@ -19,6 +19,12 @@
 <body>
   <h1>x bookmarks · options</h1>
 
+  <h2>Account</h2>
+  <p id="account-state" class="muted">Checking…</p>
+  <p id="account-error" class="bad" hidden></p>
+  <div class="actions"><button id="account-btn" class="primary" hidden>Sign in with Google</button></div>
+  <p class="muted">You only sign in once per browser; the extension stays signed in after that. Saves made while signed out are kept and upload after you sign in.</p>
+
   <h2>Viewer</h2>
   <label for="viewer">Viewer URL (opened by the popup's "Open viewer")</label>
   <input id="viewer" type="url" placeholder="https://your-project.web.app">

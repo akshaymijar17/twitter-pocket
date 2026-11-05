@@ -9,6 +9,7 @@ import { FirestoreClient } from './firestore';
 import { push, saveLocal } from './sync';
 
 const auth = new Auth({ apiKey: CONFIG.firebase.apiKey, oauthClientId: CONFIG.oauthClientId, allowedEmail: CONFIG.allowedEmail });
+auth.onSignedOut = (reason) => void chrome.storage.local.set({ authError: `Signed out (${reason}). Sign in again.` });
 const client = new FirestoreClient(CONFIG.firebase.projectId, () => auth.idToken());
 
 async function getSettings(): Promise<Settings> {
@@ -33,7 +34,11 @@ async function updateBadge() {
 }
 
 // Periodic retry: also covers coming back online, since MV3 workers get no reliable online event.
-chrome.runtime.onInstalled.addListener(() => chrome.alarms.create('push', { periodInMinutes: 1 }));
+chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+  chrome.alarms.create('push', { periodInMinutes: 1 });
+  // First run: open the sign-in page once. After that the session persists.
+  if (reason === 'install' && !(await auth.session())) chrome.tabs.create({ url: chrome.runtime.getURL('options.html#signin') });
+});
 chrome.runtime.onStartup.addListener(() => {
   chrome.alarms.create('push', { periodInMinutes: 1 });
   void kick();
@@ -92,10 +97,18 @@ async function handle(msg: ToBackground): Promise<unknown> {
     case 'getStatus':
       return status();
     case 'signIn': {
-      const s = await auth.signIn();
-      await db.resetBackoff();
-      void kick();
-      return { ok: true, email: s.email };
+      try {
+        const s = await auth.signIn();
+        await chrome.storage.local.remove('authError');
+        await db.resetBackoff();
+        void kick();
+        return { ok: true, email: s.email };
+      } catch (e) {
+        // Kept so the popup can show it: the popup closes while Google's window is open.
+        const error = e instanceof Error ? e.message : String(e);
+        await chrome.storage.local.set({ authError: error });
+        return { ok: false, error };
+      }
     }
     case 'signOut':
       await auth.signOut();
@@ -110,13 +123,13 @@ async function handle(msg: ToBackground): Promise<unknown> {
 }
 
 async function status(): Promise<StatusReply> {
-  const [session, st, lastSyncAt, needs, settings, { lastPush }] = await Promise.all([
+  const [session, st, lastSyncAt, needs, settings, { lastPush, authError }] = await Promise.all([
     auth.session(),
     db.stats(),
     db.getMeta<string>('lastSyncAt'),
     db.incompleteItems(10),
     getSettings(),
-    chrome.storage.local.get('lastPush'),
+    chrome.storage.local.get(['lastPush', 'authError']),
   ]);
   const queue = await db.dueQueue(Number.MAX_SAFE_INTEGER, 1);
   return {
@@ -125,6 +138,7 @@ async function status(): Promise<StatusReply> {
     ...st,
     lastSyncAt: lastSyncAt ?? null,
     lastError: queue[0]?.lastError ?? (lastPush as any)?.error ?? null,
+    authError: session ? null : ((authError as string) ?? null),
     needsThreadSave: needs.map((i) => ({ id: i.id, url: i.url, author_handle: i.author_handle, preview: i.preview })),
     viewerUrl: settings.viewerUrl,
   };
@@ -144,6 +158,7 @@ async function spike() {
     const { idToken, redirectUri } = await auth.googleIdToken(true);
     add('Google ID token from launchWebAuthFlow', true, `redirect URI ${redirectUri}`);
     const s = await auth.exchange(idToken, redirectUri);
+    await chrome.storage.local.remove('authError');
     add('Exchanged for a Firebase ID token', true, `uid ${s.uid}, ${s.email}`);
     const token = (await auth.idToken())!;
 

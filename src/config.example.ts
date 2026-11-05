@@ -10,8 +10,9 @@ export const CONFIG = {
   // ("Web application"). Its authorized redirect URI must be
   // https://<extension-id>.chromiumapp.org/
   oauthClientId: '',
-  // Optional: refuse to sign in with any other Google account. The real
-  // enforcement is the email check in firestore.rules.
+  // Leave empty so anyone can sign in; each person only ever sees their own
+  // data (users/{uid}). Set to one address to make the extension yours only
+  // (also tighten firestore.rules for real enforcement).
   allowedEmail: '',
   // Public key from `npm run make-key`; pins the extension ID so the OAuth
   // redirect URI stays the same across reloads. Not a secret.

@@ -100,7 +100,7 @@ npm run build                 # → dist/
 
 1. Open `brave://extensions`, turn on **Developer mode**, click **Load unpacked**, and select `dist/`.
 2. Check that the ID shown matches the one from step 2. **Options** also shows the ID and the redirect URI.
-3. Click the toolbar icon, then **Sign in**.
+3. On first install the extension opens its sign-in page and starts Google sign-in. Sign in once; the extension stays signed in after that, across tab reloads and browser restarts. (Later, the popup's **Sign in** opens the same page. Sign-in runs there rather than in the popup, because the popup closes when Google's window opens, and any error stays visible on the page.)
 4. Reload any x.com tabs that were open before you installed the extension.
 
 For development, use `npm run watch` and click reload on the extension card.
@@ -120,6 +120,16 @@ The viewer offers:
 - **Reading view.** Numbered posts, the bookmarked post marked, quoted posts inline, media links, and a link back to X.
 - **Actions.** Read, archive, favorite, and edit tags. These are the only fields the viewer writes.
 - **Export.** One item as `.md`, or **export all** as a zip of markdown files, which is your backup.
+
+## Sharing it with other people
+
+The extension works for anyone with a Google account. Each person signs in once and gets their own private space at `users/{their uid}`. The security rules stop anyone from reading or writing anyone else's.
+
+- In `src/config.ts`, leave `allowedEmail` empty. Set it to one address only if you want the extension to be yours alone.
+- Give people your built `dist/` folder, zipped, and have them load it unpacked. The `manifestKey` keeps the extension ID the same for everyone, so the OAuth redirect URI matches without extra setup.
+- Leave the Google Cloud OAuth consent screen **In production**. In *Testing* mode, only listed test users can sign in.
+- Everyone's data and usage count against your Firebase project's free Spark quota: 50k reads, 20k writes and 1 GiB stored per day/total. That is plenty for a handful of people.
+- The viewer works the same way: each person signs in with Google and sees only their own items.
 
 ## Permissions
 
@@ -192,6 +202,7 @@ To test against reality, turn on **Options → Debug**, browse your bookmarks an
 
 | Problem | What to do |
 |---|---|
+| Popup says signed out after you signed in | Sign-in failed. The popup and the Options page show the reason. Sign in again from **Options → Account**. |
 | `redirect_uri_mismatch` | The redirect URI on the OAuth client must match **Options → OAuth setup values** exactly, trailing slash included. |
 | `INVALID_IDP_RESPONSE` / `invalid audience` | The OAuth client isn't trusted by Firebase. Use the auto-created web client, or add yours to the Google provider's allowlist (step 3). |
 | Spike shows unauthenticated read as 200 | Your rules are open. Deploy `firestore.rules` now. |
